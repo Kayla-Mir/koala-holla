@@ -40,16 +40,28 @@ function getKoalas() {
     $('#viewKoalas').empty();
     console.log('GET /koalas response:', koalas);
     for(let koala of koalas){
-      $('#viewKoalas').append(`
+      if(koala.ready_to_transfer === 'N'){
+        $('#viewKoalas').append(`
+          <tr>
+            <td>${koala.name}</td>
+            <td>${koala.gender}</td>
+            <td>${koala.age}</td>
+            <td>${koala.ready_to_transfer}</td>
+            <td>${koala.notes}</td>
+            <td><button class="readyBtn" data-id="${koala.id}">Ready For Transfer</button></td>
+          </tr>
+        `)
+      }else{
+        $('#viewKoalas').append(`
         <tr>
           <td>${koala.name}</td>
           <td>${koala.gender}</td>
           <td>${koala.age}</td>
           <td>${koala.ready_to_transfer}</td>
           <td>${koala.notes}</td>
-          <td><button class="readyBtn" data-id="${koala.id}">Ready For Transfer</button></td>
         </tr>
       `)
+      }
     }
   })
 } // end getKoalas
