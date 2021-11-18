@@ -1,4 +1,3 @@
-
 // Require the pg module:
 const pg = require('pg');
 
