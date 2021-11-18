@@ -9,13 +9,18 @@
   </head>
   <body>
     <header>
-      <img src="images/icon.png" class="icon" />
-      <h1>Koala Holla</h1>
-      <h3>1976 Llama Comma Drive</h2>
-      <h3>Walla Walla, WA</h2>
+      <!-- <img src="images/icon.png" class="icon" /> -->
+      <!-- <img src="../images/koala-bg.jpg" class="icon"> -->
+      <div class="icon">
+        <div id="koalaText">
+          <h1>Koala Holla</h1>
+          <h3>1976 Llama Comma Drive</h2>
+          <h3>Walla Walla, WA</h2>
+        </div>
+      </div>
     </header>
     <section id="addKoala">
-      <h2>Add Koala</h2>
+      <h2>ADD KOALA</h2>
       <input type="text" id="nameIn" value="" placeholder="Name">
       <input type="text" id="ageIn" value="" placeholder="Age">
       <input type="text" id="genderIn" value="" placeholder="Gender">
@@ -24,20 +29,24 @@
       <button type="button" id="addButton">Add Koala</button>
     </section>
     <section>
-      <h2>All Koalas</h2>
+      <div id="koalaArea">
+      <h2>ALL KOALAS</h2>
       <table>
         <thead>
           <tr>
             <th>Name</th>
             <th>Age</th>
             <th>Gender</th>
-            <th>Notes</th>
             <th>Ready for Transfer</th>
+            <th>Notes</th>
+            <th>Mark Ready</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody id="viewKoalas">
         </tbody>
       </table>
+    </div>
     </section>
   </body>
 </html>
