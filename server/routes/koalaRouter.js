@@ -17,15 +17,15 @@ router.post('/', (req, res) => {
         ("name", "gender", "age", "ready_to_transfer", "notes")
       VALUES
         ($1, $2, $3, $4, $5);
-    `)
+    `);
     const sqlValues = [
       newKoalas.name,
       newKoalas.gender,
       newKoalas.age,
       newKoalas.ready_to_transfer,
       newKoalas.notes
-    ]
-    console.log(sqlText)
+    ];
+    console.log(sqlText);
     pool.query(sqlText, sqlValues)
       .then((dbRes) => {
         console.log(dbRes);
@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
       })
       .catch((dbErr) => {
         console.error(dbErr);
-      })
+      });
   });
 
 // PUT
