@@ -1,11 +1,20 @@
 const express = require('express');
-const koalaRouter = express.Router();
-
+const router = express.Router();
+const pool = require('./pool');
 // DB CONNECTION
 
 
 // GET
-
+router.get('/', (req, res) => {
+    const sqlText = 'SELECT * FROM koalas;'
+    pool.query(sqlText)
+      .then((dbRes) => {
+        const koalasFromDB = dbRes.rows;
+        res.send(koalasFromDB)
+      }).catch((dbErr) => {
+        console.error(dbErr);
+      });
+});
 
 // POST
 
@@ -15,4 +24,4 @@ const koalaRouter = express.Router();
 
 // DELETE
 
-module.exports = koalaRouter;
+module.exports = router;
