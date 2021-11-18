@@ -2,6 +2,8 @@ $(document).ready(onReady);
 
 function onReady() {
   $('#addButton').on('click', setupClickListeners);
+  $(document).on('click', '.deleteBtn', deleteKoala);
+  $(document).on('click', '.readyBtn', readyToTransfer);
   getKoalas();
 }
 
@@ -40,16 +42,31 @@ function getKoalas() {
     $('#viewKoalas').empty();
     console.log('GET /koalas response:', koalas);
     for(let koala of koalas){
-      $('#viewKoalas').append(`
+      if(koala.ready_to_transfer === 'N'){
+        $('#viewKoalas').append(`
+          <tr>
+            <td>${koala.name}</td>
+            <td>${koala.age}</td>
+            <td>${koala.gender}</td>
+            <td>${koala.ready_to_transfer}</td>
+            <td>${koala.notes}</td>
+            <td><button class="deleteBtn" data-id="${koala.id}">Delete</button></td>
+            <td><button class="readyBtn" data-id="${koala.id}">Ready For Transfer</button></td>
+          </tr>
+        `)
+      }else{
+        $('#viewKoalas').append(`
         <tr>
           <td>${koala.name}</td>
-          <td>${koala.gender}</td>
           <td>${koala.age}</td>
+          <td>${koala.gender}</td>
           <td>${koala.ready_to_transfer}</td>
           <td>${koala.notes}</td>
-          <td><button class="readyBtn" data-id="${koala.id}">Ready For Transfer</button></td>
+          <td></td>
+          <td><button class="deleteBtn" data-id="${koala.id}">Delete</button></td>
         </tr>
       `)
+      }
     }
   })
 } // end getKoalas
@@ -80,4 +97,16 @@ function readyToTransfer(){
   }).catch((error) =>{
     console.log('readyToTransfer error:', error);
   })
+}
+
+function deleteKoala(){
+  const koalaToDelete = $(this).data('id');
+  $.ajax({
+    method: 'DELETE',
+    url: `/koalas/${koalaToDelete}`
+  }).then((res) =>{
+    getKoalas();
+  }).catch((error) =>{
+    console.log('deleteKoala error:', error);
+  });
 }
