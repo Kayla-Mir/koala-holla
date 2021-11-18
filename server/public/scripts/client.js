@@ -32,10 +32,42 @@ function getKoalas() {
   console.log('in getKoalas');
   // ajax call to server to get koalas
 
+  $.ajax({
+    method: 'GET',
+    url: '/koalas'
+  }).then((response) =>{
+    const koalas = response;
+    $('#viewKoalas').empty();
+    console.log('GET /koalas response:', koalas);
+    for(let koala of koalas){
+      $('#viewKoalas').append(`
+        <tr>
+          <td>${koala.name}</td>
+          <td>${koala.gender}</td>
+          <td>${koala.age}</td>
+          <td>${koala.ready_to_transfer}</td>
+          <td>${koala.notes}</td>
+          <td><button class="readyBtn" data-id="${koala.id}">Ready For Transfer</button></td>
+        </tr>
+      `)
+    }
+  })
 } // end getKoalas
 
 function saveKoala(newKoala) {
   console.log('in saveKoala', newKoala);
   // ajax call to server to get koalas
 
+}
+
+function readyToTransfer(){
+  const koalaToMark = $(this).data('id');
+  $.ajax({
+    method: 'PUT',
+    url: `/koalas/${koalaToMark}`
+  }).then((res) =>{
+    getKoalas();
+  }).catch((error) =>{
+    console.log('readyToTransfer error:', error);
+  })
 }
