@@ -62,6 +62,7 @@ function getKoalas() {
           <td>${koala.gender}</td>
           <td>${koala.ready_to_transfer}</td>
           <td>${koala.notes}</td>
+          <td></td>
           <td><button class="deleteBtn" data-id="${koala.id}">Delete</button></td>
         </tr>
       `)
