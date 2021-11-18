@@ -46,7 +46,6 @@ input {
 table {
     color: white;
     width: 60vw;
-    background-color: #745343;
     border-collapse: collapse;
   }
   
@@ -56,6 +55,16 @@ td, th {
     text-align: center;
     padding-bottom: 10px;
 }
+ th {
+    background-color: #745343;
+    font-size: larger;
+ }
+
+ td {
+     background-color: #ceb9a2;
+     color: black;
+     font-weight: bold;
+ }
 
 button {
     border-color: #BFC3AA;
