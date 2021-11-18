@@ -45,6 +45,7 @@ function getKoalas(){
           <td>${koala.age}</td>
           <td>${koala.ready_to_transfer}</td>
           <td>${koala.notes}</td>
+          <td><button class="readyBtn" data-id="${koala.id}">Ready For Transfer</button></td>
         </tr>
       `)
     }
@@ -55,4 +56,16 @@ function saveKoala( newKoala ){
   console.log( 'in saveKoala', newKoala );
   // ajax call to server to get koalas
  
+}
+
+function readyToTransfer(){
+  const koalaToMark = $(this).data('id');
+  $.ajax({
+    method: 'PUT',
+    url: `/koalas/${koalaToMark}`
+  }).then((res) =>{
+    getKoalas();
+  }).catch((error) =>{
+    console.log('readyToTransfer error:', error);
+  })
 }
