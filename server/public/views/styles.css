@@ -1,0 +1,66 @@
+body {
+    background-color: #BFC3AA;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.icon {
+    background-image: url("../images/koala-bg.jpg");
+    background-color: #f7ddba;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+#koalaText {
+    font-family: fantasy;
+    color: #EEF0E9;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: x-large;
+    margin-left: 20vw;
+}
+
+input {
+    padding-top: 5px;
+    text-align: center;
+    border: inset;
+    border-radius: 7px;
+}
+
+#addKoala {
+    text-align: center;
+    padding: 0vw 0vw
+}
+
+#koalaArea {
+    padding-top: 15px;
+    text-align: center;
+    margin-right: 20vw;
+    margin-left: 20vw;
+}
+
+table {
+    color: white;
+    width: 60vw;
+    background-color: #745343;
+    border-collapse: collapse;
+  }
+  
+td, th {
+    border: 1px solid #999;
+    padding: 0.5rem;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+button {
+    border-color: #BFC3AA;
+    background-color: white;
+    border-radius: 6px;
+    padding: 5px 15px;
+    white-space: nowrap;
+}
